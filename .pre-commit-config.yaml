@@ -1,0 +1,43 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    -   id: check-yaml
+    -   id: check-merge-conflict
+    -   id: end-of-file-fixer
+    -   id: requirements-txt-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 26.10.0
+    hooks:
+    -   id: black
+        additional_dependencies: ['hatchling>=1.8.0']
+    -   id: black-jupyter
+-   repo: https://github.com/hadialqattan/pycln
+    rev: v2.6.0
+    hooks:
+    - id: pycln
+      args: [--all]
+-   repo: https://github.com/PyCQA/isort
+    rev: 9.0.2
+    hooks:
+    -   id: isort
+        args: ['--profile=black']
+-   repo: https://github.com/pycqa/pylint
+    rev: v4.1.2
+    hooks:
+    -   id: pylint
+        args:
+          [
+            "--disable=all",
+            "--enable=E0602,E0601,E0001,E1120,C0114,C0116",
+            "--fail-under=10.0",
+          ]
+- repo: https://github.com/PyCQA/docformatter
+  rev: v1.7.8
+  hooks:
+    - id: docformatter
+      args: ["-i",
+             "--black",
+             "--pre-summary-newline",
+             ]
